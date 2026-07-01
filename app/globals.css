@@ -1,0 +1,157 @@
+     1|/* Tailwind v4 - config lives here only. There is no tailwind.config.js. */
+     2|@import "tailwindcss";
+     3|
+     4|:root {
+     5|	color-scheme: dark;
+     6|	--background: 240 10% 4%;
+     7|	--foreground: 200 10% 95%;
+     8|	--card: 240 10% 6%;
+     9|	--card-foreground: 200 10% 95%;
+    10|	--primary: 190 70% 50%;
+    11|	--primary-foreground: 240 10% 4%;
+    12|	--secondary: 175 50% 35%;
+    13|	--secondary-foreground: 200 10% 95%;
+    14|	--muted: 240 10% 12%;
+    15|	--muted-foreground: 200 5% 50%;
+    16|	--accent: 150 60% 45%;
+    17|	--accent-foreground: 240 10% 4%;
+    18|	--destructive: 0 70% 50%;
+    19|	--destructive-foreground: 0 0% 98%;
+    20|	--border: 240 10% 18%;
+    21|	--input: 240 10% 10%;
+    22|	--ring: 190 70% 50%;
+    23|	--radius: 0.5rem;
+    24|}
+    25|
+    26|@theme {
+    27|	--color-background: hsl(var(--background));
+    28|	--color-foreground: hsl(var(--foreground));
+    29|	--color-card: hsl(var(--card));
+    30|	--color-card-foreground: hsl(var(--card-foreground));
+    31|	--color-primary: hsl(var(--primary));
+    32|	--color-primary-foreground: hsl(var(--primary-foreground));
+    33|	--color-secondary: hsl(var(--secondary));
+    34|	--color-secondary-foreground: hsl(var(--secondary-foreground));
+    35|	--color-muted: hsl(var(--muted));
+    36|	--color-muted-foreground: hsl(var(--muted-foreground));
+    37|	--color-accent: hsl(var(--accent));
+    38|	--color-accent-foreground: hsl(var(--accent-foreground));
+    39|	--color-destructive: hsl(var(--destructive));
+    40|	--color-destructive-foreground: hsl(var(--destructive-foreground));
+    41|	--color-border: hsl(var(--border));
+    42|	--color-input: hsl(var(--input));
+    43|	--color-ring: hsl(var(--ring));
+    44|	--radius-sm: calc(var(--radius) - 2px);
+    45|	--radius-md: var(--radius);
+    46|	--radius-lg: calc(var(--radius) + 2px);
+    47|	--font-sans: ui-sans-serif, system-ui, sans-serif;
+    48|	--font-mono: ui-monospace, SFMono-Regular, monospace;
+    49|}
+    50|
+    51|@layer base {
+    52|	* {
+    53|		box-sizing: border-box;
+    54|	}
+    55|
+    56|	html {
+    57|		font-family: var(--font-sans);
+    58|	}
+    59|
+    60|	body {
+    61|		margin: 0;
+    62|		background: linear-gradient(135deg, #0a0a14 0%, #1a1a2e 50%, #0a0a14 100%);
+    63|		color: var(--color-foreground);
+    64|		-webkit-font-smoothing: antialiased;
+    65|		-moz-osx-font-smoothing: grayscale;
+    66|	}
+    67|
+    68|	a {
+    69|		color: inherit;
+    70|		text-decoration: none;
+    71|	}
+    72|}
+    73|
+    74|@layer utilities {
+    75|	.glass {
+    76|		background: rgba(255, 255, 255, 0.05);
+    77|		backdrop-filter: blur(10px);
+    78|		border: 1px solid rgba(255, 255, 255, 0.1);
+    79|	}
+    80|
+    81|	.glass-dark {
+    82|		background: rgba(0, 0, 0, 0.3);
+    83|		backdrop-filter: blur(15px);
+    84|		border: 1px solid rgba(255, 255, 255, 0.05);
+    85|	}
+    86|
+    87|	.gradient-text {
+    88|		@apply bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent;
+    89|	}
+    90|
+    91|	.glow-purple {
+    92|		box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
+    93|	}
+    94|
+    95|	.glow-cyan {
+    96|		box-shadow: 0 0 20px rgba(34, 211, 238, 0.3);
+    97|	}
+    98|
+    99|	.card-glass {
+   100|		background: rgba(255, 255, 255, 0.05);
+   101|		backdrop-filter: blur(10px);
+   102|		border: 1px solid rgba(255, 255, 255, 0.1);
+   103|		border-radius: 1rem;
+   104|		padding: 1.5rem;
+   105|		transition: all 0.3s ease;
+   106|	}
+   107|
+   108|	.card-glass:hover {
+   109|		border-color: rgba(255, 255, 255, 0.2);
+   110|	}
+   111|
+   112|	.fade-in {
+   113|		animation: fadeIn 0.3s ease-in;
+   114|	}
+   115|
+   116|	@keyframes fadeIn {
+   117|		from {
+   118|			opacity: 0;
+   119|			transform: translateY(10px);
+   120|		}
+   121|		to {
+   122|			opacity: 1;
+   123|			transform: translateY(0);
+   124|		}
+   125|	}
+   126|
+   127|	.slide-in {
+   128|		animation: slideIn 0.4s ease-out;
+   129|	}
+   130|
+   131|	@keyframes slideIn {
+   132|		from {
+   133|			opacity: 0;
+   134|			transform: translateX(-20px);
+   135|		}
+   136|		to {
+   137|			opacity: 1;
+   138|			transform: translateX(0);
+   139|		}
+   140|	}
+   141|
+   142|	.pulse-glow {
+   143|		animation: pulseGlow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+   144|	}
+   145|
+   146|	@keyframes pulseGlow {
+   147|		0%, 100% {
+   148|			opacity: 1;
+   149|		}
+   150|		50% {
+   151|			opacity: 0.7;
+   152|		}
+   153|	}
+   154|
+   155|
+   156|}
+   157|

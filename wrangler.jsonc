@@ -1,0 +1,56 @@
+     1|{
+     2|  "$schema": "node_modules/wrangler/config-schema.json",
+     3|  "name": "app",
+     4|  "main": ".open-next/worker.js",
+     5|  "compatibility_date": "2026-01-07",
+     6|  "compatibility_flags": [
+     7|    "nodejs_compat"
+     8|  ],
+     9|  "observability": {
+    10|    "enabled": true,
+    11|    "logs": {
+    12|      "enabled": true,
+    13|      "invocation_logs": true
+    14|    },
+    15|    "traces": {
+    16|      "enabled": true,
+    17|      "head_sampling_rate": 0.1,
+    18|      "destinations": [
+    19|        "tools-observability"
+    20|      ],
+    21|      "persist": false
+    22|    }
+    23|  },
+    24|  "upload_source_maps": true,
+    25|  "assets": {
+    26|    "directory": ".open-next/assets",
+    27|    "binding": "ASSETS"
+    28|  },
+    29|  "services": [
+    30|    {
+    31|      "binding": "NULLSHOT_API",
+    32|      "service": "api-proxy"
+    33|    }
+    34|  ],
+    35|  "ai": {
+    36|    "binding": "AI"
+    37|  },
+    38|  "vars": {
+    39|    "NEXT_PUBLIC_SUI_NETWORK": "testnet",
+    40|    "NEXT_PUBLIC_PACKAGE_ID": "0xPACKAGE_ID",
+    41|    "NEXT_PUBLIC_MARKET_PACKAGE_ID": "0xMARKET_PACKAGE_ID",
+    42|    "NEXT_PUBLIC_BADGE_PACKAGE_ID": "0xBADGE_PACKAGE_ID"
+    43|  },
+    44|  "secrets": {
+    45|    "required": [
+    46|      "GEMINI_API_KEY"
+    47|    ]
+    48|  },
+    49|  "d1_databases": [
+    50|    {
+    51|      "binding": "DB",
+    52|      "database_name": "9d0deda6-3de2-4ccd-9977-6b661f69bf93",
+    53|      "database_id": "681b1a09-4c27-4fef-b353-279c14db4a4b"
+    54|    }
+    55|  ]
+    56|}
